@@ -7,7 +7,7 @@ class container {
 public:
 	float* p;
 	container(int s) :size(s){}
-	const int& getsize() { return size;}
+	int& getsize() { return size;}
 };
 
 class vector :public container {
@@ -31,7 +31,7 @@ int main() {
 	vector v1(c1.getsize());
 	container& r1 = v1;
 	container c2 = 100;
-	c2.getsize();
+	c2.getsize() = 100;
 	cout << c2.getsize() << endl;
 	vector v2(100);
 	v2.getlen() = 40;
