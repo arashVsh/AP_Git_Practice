@@ -27,6 +27,7 @@ public:
 
 int main() {
 
+
 	container c1(100);
 	vector v1(c1.getsize());
 	container& r1 = v1;
