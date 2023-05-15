@@ -11,3 +11,6 @@ int main() {
 
 	
 }
+
+//no problems are present in this code syntaxially not sure of the logics
+//here is the output:Be WooW
