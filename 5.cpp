@@ -8,3 +8,7 @@ int main()
     printf("%c", (char)(*ptr2 - *ptr1));
     return 0;
 }
+// *ptr1 --> 10
+// *ptr2 --> 60
+// print : 50
+// print: 2(char)
