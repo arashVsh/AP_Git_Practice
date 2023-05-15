@@ -7,3 +7,6 @@ int main()
     printf("%f", *ptr2 - *ptr1);
     return 0;
 }
+// *ptr1 --> 12.5
+// *ptr2 --> 90.5
+// print: 78.0000

@@ -9,5 +9,9 @@ int main() {
 	printf("%c%c%c%c\n", **str, *(*(str + 1) + 1), *((str + 2)[-1] + 1), **&*(&str[-1] + 1));
 
 
-	
 }
+/*
+8: *f(str) => Best --> B , *(f(str)+1) => e
+9: **str => W , *(*(str+1)+1) => o , (str+2)[-1]--> You => o ,  W
+Be WooW
+*/
