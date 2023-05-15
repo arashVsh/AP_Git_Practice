@@ -8,7 +8,7 @@ int main() {
 	printf("%c%c ", *f(str), *(f(str) + 1));
 	printf("%c%c%c%c\n", **str, *(*(str + 1) + 1), *((str + 2)[-1] + 1), **&*(&str[-1] + 1));
 
-	
+
 }
 /*
 8: *f(str) => Best --> B , *(f(str)+1) => e

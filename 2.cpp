@@ -23,6 +23,7 @@ int main() {
             "ap",
             "class"
     };
+
     char findIt;
     cin >> findIt;
     cout << countAllSpecificChars(sArr, 4, findIt);

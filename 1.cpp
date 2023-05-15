@@ -11,7 +11,6 @@ public:
 };
 
 class vector :public container {
-
 	int call_num;
 public:
 	explicit vector(int l) :len(l), container(1 * 100) {

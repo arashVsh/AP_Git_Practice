@@ -12,3 +12,4 @@ int main()
 // *ptr2 --> 60
 // print : 50
 // print: 2(char)
+
