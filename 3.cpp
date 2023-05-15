@@ -110,6 +110,7 @@ void main()
 	long long int x;
 	while (true)
 	{
+
 		scanf("%d", &cmd);
 		switch (cmd)
 		{
