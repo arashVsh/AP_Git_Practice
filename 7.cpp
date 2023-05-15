@@ -8,3 +8,6 @@ int main()
 	printf("%d", *p);
 	return 0;
 }
+
+// no problems are present syntaxially and the program runs correctly not sure of the logics
+// Here is the output: 3
