@@ -5,7 +5,7 @@ class container {
     int size;
 public:
     container(int s) : size(s) {}
-    const int& getsize() { return size; }
+    int& getsize() { return size; } // Return non-constant reference
 };
 
 class MyVector : public container {
@@ -13,7 +13,6 @@ class MyVector : public container {
     int len;
 public:
     explicit MyVector(int l) : container(1 * 100), len(l), call_num(0) {
-       
         p = new float();
     }
 
