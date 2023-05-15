@@ -38,7 +38,8 @@ void search(int x)
 {
 	alfaptr node = front;
 	int counter = 0;
-	while (node)
+	while (node != NULL)
+{
 		if (node->x == x)
 			printf("%d", counter);
 		else {
@@ -46,6 +47,7 @@ void search(int x)
 			break;
 		}
 		node = node->next;
+}
 }
 
 void rpop() {//pop last element
@@ -97,7 +99,7 @@ int average()
 	return sum / count;
 }
 
-void main()
+int main()
 {
 	int cmd;
 	long long int x;
