@@ -15,11 +15,15 @@ void push(int x)
 	alfaptr node;
 	node = (alfaptr)malloc(sizeof(struct alfa));
 	node->x = x;
+	node->next = NULL;
 	if (!front)
 		front = node;
 	else {
+		while (rear->next != NULL){
+			rear = rear->next;	
+		}
 		rear->next = node;
-		rear = node;
+		rear = rear->next;
 	}
 }
 
@@ -97,7 +101,7 @@ int average()
 	return sum / count;
 }
 
-void main()
+int main()
 {
 	int cmd;
 	long long int x;
@@ -133,4 +137,5 @@ void main()
 			exit(0);
 		}
 	}
+	//didnt have a problem
 }

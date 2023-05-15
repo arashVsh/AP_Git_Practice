@@ -5,5 +5,6 @@ int main()
     float *ptr1 = &arr[0];
     float *ptr2 = ptr1 + 3;
     printf("%f", *ptr2 - *ptr1);
+    //doesnt have problem output : 78.0000000
     return 0;
 }

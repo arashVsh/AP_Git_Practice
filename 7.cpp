@@ -7,4 +7,5 @@ int main()
 	p += 2;
 	printf("%d", *p);
 	return 0;
+	//doesnt have problem output : 3 
 }
