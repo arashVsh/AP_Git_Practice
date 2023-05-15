@@ -30,3 +30,9 @@ int main()
     cin >> findIt;
     cout << countAllSpecificChars(sArr, 4, findIt);
 }
+/*input:s
+out put:2
+or
+i
+1
+*/
