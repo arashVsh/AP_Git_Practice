@@ -1,11 +1,12 @@
-﻿#include<stdio.h>
-#include<stdlib.h>
+﻿#include <stdio.h>
+#include <stdlib.h>
 #define MAX_SIZE 200
 int arr[MAX_SIZE];
 
-typedef struct alfa * alfaptr;
+typedef struct alfa *alfaptr;
 
-struct alfa {
+struct alfa
+{
 	long long x;
 	alfaptr next;
 };
@@ -15,11 +16,18 @@ void push(int x)
 	alfaptr node;
 	node = (alfaptr)malloc(sizeof(struct alfa));
 	node->x = x;
+	node->next = NULL;
 	if (!front)
+	{
 		front = node;
-	else {
+		rear = node; // rear should point to node too.
+		rear->next = NULL;
+	}
+	else
+	{
 		rear->next = node;
 		rear = node;
+		rear->next = NULL;
 	}
 }
 
@@ -31,6 +39,7 @@ void pop()
 	else
 	{
 		node = front->next;
+		free(front);
 		front = node;
 	}
 }
@@ -39,21 +48,28 @@ void search(int x)
 	alfaptr node = front;
 	int counter = 0;
 	while (node)
+	{
 		if (node->x == x)
+		{
 			printf("%d", counter);
-		else {
-			printf("ERROR2");
-			break;
+			return;
 		}
 		node = node->next;
+		counter++; // should count every loop.
+	}
+	printf("ERROR2");
+	// conditons should be in loop.
 }
 
-void rpop() {//pop last element
-	alfaptr node = front;
-	while (node)
+void rpop() // pop last element
+{
+	alfaptr node;
+	node = front; // dont't change front position.
+	while (node->next->next)
 		node = node->next;
 	free(rear);
 	rear = node;
+	rear->next = NULL;
 }
 
 void set()
@@ -66,16 +82,20 @@ void set()
 int size()
 {
 	alfaptr node = front;
-	int count;
+	int count = 0; // should be zero .
 	while (node)
-		count++;node = node->next;
+	{
+		node = node->next; // should be in loop.
+		count++;
+	}
 	return count;
 }
 
 void show()
 {
-	if (!front) {
-		for (int i = 0; i < MAX_SIZE; i++)
+	if (front) // we don't need !
+	{
+		for (int i = 0; i < size(); i++) // i don't know that array is full or not.
 			printf("%d ", arr[i]);
 	}
 	else
@@ -88,8 +108,9 @@ int average()
 {
 
 	alfaptr node = front;
-	int sum = 0, count;
-	while (node) {
+	int sum = 0, count = 0;
+	while (node)
+	{
 		sum += node->x;
 		count++;
 		node = node->next;
@@ -97,7 +118,7 @@ int average()
 	return sum / count;
 }
 
-void main()
+int main()
 {
 	int cmd;
 	long long int x;
@@ -106,27 +127,27 @@ void main()
 		scanf("%d", &cmd);
 		switch (cmd)
 		{
-		case 1://push
+		case 1: // push
 			scanf("%lld", &x);
 			push(x);
 			break;
-		case 2://pop
+		case 2: // pop
 			pop();
 			break;
-		case 3://rpop
+		case 3: // rpop
 			rpop();
 			break;
-		case 4://search
+		case 4: // search
 			scanf("%lld", &x);
 			search(x);
 			break;
-		case 5://set
+		case 5: // set
 			set();
 			break;
-		case 6://show
+		case 6: // show
 			show();
 			break;
-		case 7://size
+		case 7: // size
 			printf("%d", size());
 			break;
 		case 10:

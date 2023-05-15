@@ -20,8 +20,7 @@ private:
 
 public:
 	int len;
-	vector() = default;
-	vector(container &v)
+	vector(container &v) // for convarsion of container to vector.
 	{
 		this->getsize() = v.getsize();
 	}
@@ -40,16 +39,15 @@ public:
 
 int main()
 {
-
 	container c1(100);
 	vector v1 = c1;
 	container &r1 = v1;
 	container c2 = 100;
 	c2.getsize() = 20;
-	cout << c2.getsize()<<endl;
+	cout << c2.getsize() << endl;
 	vector v2 = 100;
 	v2.getlen() = 40;
-	cout << v2.getlen()<<endl;
+	cout << v2.getlen() << endl;
 }
 /* out put :
 20
