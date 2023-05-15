@@ -15,11 +15,15 @@ void push(int x)
 	alfaptr node;
 	node = (alfaptr)malloc(sizeof(struct alfa));
 	node->x = x;
+	node->next = NULL;
 	if (!front)
 		front = node;
 	else {
+		while (rear->next != NULL){
+			rear = rear->next;	
+		}
 		rear->next = node;
-		rear = node;
+		rear = rear->next;
 	}
 }
 
