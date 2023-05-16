@@ -1,9 +1,12 @@
-﻿#include<stdio.h>
-#include<stdlib.h>
+﻿
+#include <stdio.h>
+#include <stdlib.h>
+
+
 #define MAX_SIZE 200
 int arr[MAX_SIZE];
 
-typedef struct alfa * alfaptr;
+typedef struct alfa* alfaptr;
 
 struct alfa {
 	long long x;
@@ -15,18 +18,21 @@ void push(int x)
 	alfaptr node;
 	node = (alfaptr)malloc(sizeof(struct alfa));
 	node->x = x;
-	if (!front)
+	node->next = NULL; /// next => null
+	if (front == NULL) /// added null
 		front = node;
 	else {
-		rear->next = node;
-		rear = node;
+		/// change somthing
+		alfaptr curr = front;
+		for (; curr->next != NULL; curr = curr->next);
+		curr->next = node;
 	}
 }
 
 void pop()
 {
 	alfaptr node;
-	if (!front)
+	if (front == NULL)/// added null
 		printf("ERROR1");
 	else
 	{
@@ -38,44 +44,62 @@ void search(int x)
 {
 	alfaptr node = front;
 	int counter = 0;
-	while (node)
-		if (node->x == x)
-			printf("%d", counter);
-		else {
-			printf("ERROR2");
-			break;
+	while (node != NULL) {///aded Null
+		if (node->x == x) {
+			printf("%d\n", counter);
+			return;
 		}
-		node = node->next;
+		++counter;
+		node = node->next;   ///remove something
+	}
+	printf("ERROR2");
 }
 
 void rpop() {//pop last element
 	alfaptr node = front;
-	while (node)
+	if (front == NULL) {
+		printf("ERROR4");
+		return;
+	}
+	if (node->next == NULL) {
+		pop();
+		return;
+	}
+	while (node->next->next != NULL)
 		node = node->next;
-	free(rear);
+	node->next = NULL;
+
+	while (node->next != NULL)
+		node = node->next;
 	rear = node;
+
 }
 
 void set()
 {
 	alfaptr node = front;
-	for (int i = 0; i < MAX_SIZE && node; i++, node = node->next)
+	for (int i = 0; i < MAX_SIZE && (node != NULL); i++, node = node->next)
 		arr[i] = node->x;
 }
 
 int size()
 {
 	alfaptr node = front;
-	int count;
-	while (node)
-		count++;node = node->next;
+	int count = 0;///initialize vrb count = 0
+	while (node != NULL) {
+		count++;
+		node = node->next;
+	}
 	return count;
 }
 
 void show()
 {
-	if (!front) {
-		for (int i = 0; i < MAX_SIZE; i++)
+	if (front != NULL) {
+		alfaptr node = front;
+		//for (int i = 0; i < MAX_SIZE && (node != NULL); i++, node = node->next)
+			//printf("%d ",node->x);
+		for (int i = 0; i < size(); i++)
 			printf("%d ", arr[i]);
 	}
 	else
@@ -88,8 +112,8 @@ int average()
 {
 
 	alfaptr node = front;
-	int sum = 0, count;
-	while (node) {
+	int sum = 0, count = 0;///initialize vrb count = 0
+	while (node != NULL) { ///add null
 		sum += node->x;
 		count++;
 		node = node->next;
@@ -103,11 +127,11 @@ void main()
 	long long int x;
 	while (true)
 	{
-		scanf("%d", &cmd);
+		scanf_s("%d", &cmd);
 		switch (cmd)
 		{
 		case 1://push
-			scanf("%lld", &x);
+			scanf_s("%lld", &x);
 			push(x);
 			break;
 		case 2://pop
@@ -117,7 +141,7 @@ void main()
 			rpop();
 			break;
 		case 4://search
-			scanf("%lld", &x);
+			scanf_s("%lld", &x);
 			search(x);
 			break;
 		case 5://set
