@@ -97,12 +97,13 @@ int average()
 	return sum / count;
 }
 
-void main()
+int main() //void main()
 {
 	int cmd;
 	long long int x;
 	while (true)
 	{
+		printf( "cmd : ");
 		scanf("%d", &cmd);
 		switch (cmd)
 		{
